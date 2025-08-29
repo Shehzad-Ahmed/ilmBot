@@ -1,0 +1,13 @@
+services:
+  ilmbot-api:
+    build: .  # Uses the Dockerfile
+    container_name: ilmBot-api
+    env_file:
+      - .env
+    ports:
+      - "8000:8000"
+    environment:
+      - ENV=development
+    volumes:
+      - "./src:/code/src"
+    command: poetry run uvicorn src.main:app --host 0.0.0.0 --port 8000 --reload # Run the app with auto-reload

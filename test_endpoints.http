@@ -1,0 +1,68 @@
+# Test ilmBot API endpoints
+
+### Test Health Check
+GET http://localhost:8000/health-check
+Accept: text/html
+
+### Test Summarise with short text
+POST http://localhost:8000/api/v1/summarise
+Accept: text/event-stream
+Content-Type: application/json
+
+{
+  "text": "The quick brown fox jumps over the lazy dog. This sentence contains all the letters in the English alphabet. It's commonly used for typing practice."
+}
+
+### Test Summarise with long text
+POST http://localhost:8000/api/v1/summarise
+Accept: text/event-stream
+Content-Type: application/json
+
+{
+  "text": "Artificial intelligence is transforming many industries. In healthcare, AI helps with diagnosis and treatment planning. In finance, it detects fraud and automates trading. In education, it personalizes learning experiences. While AI offers many benefits, it also raises ethical concerns about privacy and job displacement that society must address."
+}
+
+### Test Summarise with empty text (should handle error)
+POST http://localhost:8000/api/v1/summarise
+Accept: text/event-stream
+Content-Type: application/json
+
+{
+  "text": ""
+}
+
+### Test Text Completion with simple prompt
+POST http://localhost:8000/api/v1/text-completion
+Accept: text/event-stream
+Content-Type: application/json
+
+{
+  "text": "Once upon a time"
+}
+
+### Test Text Completion with technical prompt
+POST http://localhost:8000/api/v1/text-completion
+Accept: text/event-stream
+Content-Type: application/json
+
+{
+  "text": "The future of AI will be"
+}
+
+### Test Text Completion with incomplete sentence
+POST http://localhost:8000/api/v1/text-completion
+Accept: text/event-stream
+Content-Type: application/json
+
+{
+  "text": "To implement this feature, we need to"
+}
+
+### Test Text completion with empty text (should handle error)
+POST http://localhost:8000/api/v1/text-completion
+Accept: text/event-stream
+Content-Type: application/json
+
+{
+  "text": ""
+}
